@@ -16,9 +16,6 @@ import static treamcode.MathFunctions.AngleWrap;
 
 public class RobotMovement {
 
-
-
-
     /**
      *
      * @param x
