@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/PurePursuitTutorial/treamcode/MathFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PurePursuitTutorial/treamcode/MathFunctions.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PurePursuitTutorial/treamcode/MyOpMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PurePursuitTutorial/treamcode/MyOpMode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PurePursuitTutorial/treamcode/RobotMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PurePursuitTutorial/treamcode/RobotMovement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treamcode/MathFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treamcode/MathFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treamcode/MyOpMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treamcode/MyOpMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treamcode/RobotMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treamcode/RobotMovement.java" afterDir="false" />
@@ -88,26 +87,26 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="209" key="GridCell.Tab.0.bottom" timestamp="1581719081131">
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom" timestamp="1581744218946">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581714265548" />
-    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1581719081131" />
-    <state width="1398" height="209" key="GridCell.Tab.0.center" timestamp="1581719081130">
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581739611091" />
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1581744218946" />
+    <state width="1398" height="209" key="GridCell.Tab.0.center" timestamp="1581744218945">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="209" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581714265547" />
-    <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1581719081130" />
-    <state width="1398" height="209" key="GridCell.Tab.0.left" timestamp="1581719081129">
+    <state width="1398" height="209" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581739611088" />
+    <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1581744218945" />
+    <state width="1398" height="209" key="GridCell.Tab.0.left" timestamp="1581744218944">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="209" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581714265546" />
-    <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1581719081129" />
-    <state width="1398" height="209" key="GridCell.Tab.0.right" timestamp="1581719081130">
+    <state width="1398" height="209" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581739611087" />
+    <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1581744218944" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right" timestamp="1581744218946">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="209" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581714265548" />
-    <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1581719081130" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581739611089" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1581744218946" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
