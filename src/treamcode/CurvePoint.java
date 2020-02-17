@@ -42,4 +42,13 @@ public class CurvePoint {
         y = p.y;
     }
 
+    public void setCharacteristics(CurvePoint c){
+        moveSpeed = c.moveSpeed;
+        turnSpeed = c.turnSpeed;
+        followDistance = c.followDistance;
+        pointLength = c.pointLength;
+        slowDownTurnRadians = c.slowDownTurnRadians;
+        slowDownTurnAmount = c.slowDownTurnAmount;
+    }
+
 }
