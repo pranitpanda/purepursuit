@@ -26,7 +26,7 @@ public class RobotMovement {
     public static void followCurve(ArrayList<CurvePoint> allPoints, double[] followAngles){
         updateVelocity();
         if (loopCount%10==0){
-            //System.out.println("("+xVelocity+", "+yVelocity+")");
+
             loopCount= loopCount/10;
         }else{
             loopCount++;
@@ -38,12 +38,7 @@ public class RobotMovement {
         updateLocationAlongPath(allPoints, new Point(worldXPosition,worldYPosition));
 
 
-//        for(int i =nextPointNum-1;i<nextPointNum+1 && i < allPoints.size()-1;i++){
-//            ComputerDebugging.sendLine(new FloatPoint(allPoints.get(i).x,allPoints.get(i).y),new FloatPoint(allPoints.get(i+1).x,allPoints.get(i+1).y) );
-//        }
-
         drawDistanceLine(allPoints,new Point(worldXPosition,worldYPosition));
-
 
         CurvePoint followMe = getFollowPointPath(allPoints, new Point(worldXPosition, worldYPosition), followAngles[nextPointNum]);
 
@@ -56,7 +51,8 @@ public class RobotMovement {
     public static void updateLocationAlongPath(ArrayList<CurvePoint> allPoints, Point robotPos){
         double shortestDistanceToLine = 100000000;
         int smallest = 0;
-        for (int i = 0; i < allPoints.size()-1;i++){
+        for (int i = nextPointNum-1; i < allPoints.size()-1;i++){
+
             double[] dArray = pointLineIntersection(robotPos,allPoints.get(i),allPoints.get(i+1));
 
             double dist = dArray[0];
@@ -79,6 +75,10 @@ public class RobotMovement {
             nextPointNum++;
         }
 
+        if (nextPointNum==7&&Math.hypot(allPoints.get(7).x-robotPos.x,allPoints.get(7).y-robotPos.y) <=25 ){
+            nextPointNum++;
+        }
+
     }
 
     //Updates the x and y velocities of the robot and the past position
@@ -91,22 +91,25 @@ public class RobotMovement {
     public static void drawDistanceLine(ArrayList<CurvePoint> allPoints, Point robotPos){
         double[] arr = pointLineIntersection(robotPos,allPoints.get(nextPointNum-1),allPoints.get(nextPointNum));
         ComputerDebugging.sendLine(new FloatPoint(arr[1],arr[2]),new FloatPoint(robotPos.x,robotPos.y) );
-        //ComputerDebugging.sendKeyPoint(new FloatPoint(arr[1],arr[2]));
+        if (arr[1]>1000){
+            debug = true;
+            pointLineIntersection(robotPos,allPoints.get(nextPointNum-1),allPoints.get(nextPointNum));
+        }
 
     }
 
     public static CurvePoint getFollowPointPath(ArrayList<CurvePoint> pathPoints, Point robotPos, double preferredAngle){
 
         CurvePoint followMe = new CurvePoint(pathPoints.get(nextPointNum));
-        //System.out.println("Start point: "+ (nextPointNum-1) + " End Point: "+ (nextPointNum+1));
 
-        int topBound = nextPointNum+1;
+        int topBound = nextPointNum+2;
 
         if (nextPointNum==2 && Math.hypot(pathPoints.get(2).x-robotPos.x,pathPoints.get(2).y-robotPos.y) >= followMe.followDistance){
             topBound = nextPointNum;
         }
-        if (nextPointNum==8 && Math.hypot(pathPoints.get(8).x-robotPos.x,pathPoints.get(8).y-robotPos.y) >= followMe.followDistance){
-            topBound = nextPointNum;
+
+        if (nextPointNum==11){
+            topBound = nextPointNum+1;
         }
 
 
@@ -130,13 +133,9 @@ public class RobotMovement {
                 }
             }
         }
-        if(nextPointNum==10 && Math.hypot(pathPoints.get(10).x-robotPos.x,pathPoints.get(10).y-robotPos.y) <= followMe.followDistance){
-            followMe.turnSpeed = 0;
-        }
 
-        if (nextPointNum==11&& Math.hypot(pathPoints.get(11).x-robotPos.x,pathPoints.get(11).y-robotPos.y) <= followMe.followDistance){
-            followMe.setPoint(new Point(robotPos.x,robotPos.y));
-        }
+
+
         return followMe;
     }
 
@@ -156,23 +155,24 @@ public class RobotMovement {
         double relativeXtoPoint = Math.cos(relativeAngle)*distanceToTarget;
         double relativeYtoPoint = Math.sin(relativeAngle)*distanceToTarget;
 
-        double movementXPower = relativeXtoPoint/(Math.abs(relativeXtoPoint) + Math.abs(relativeYtoPoint));
-        double movementYPower = relativeYtoPoint/(Math.abs(relativeXtoPoint) + Math.abs(relativeYtoPoint));
+        double magnitude = Math.hypot(relativeXtoPoint,relativeYtoPoint);
+        double movementXPower = relativeXtoPoint/magnitude;
+        double movementYPower = relativeYtoPoint/magnitude;
 
         movement_x = movementXPower * movementSpeed;
         movement_y = movementYPower * movementSpeed;
 
 
         double relativeTurnAngle = relativeAngle - preferedAngle;
-        System.out.println(relativeTurnAngle);
 
-        if (relativeTurnAngle > slowDownTurnRadians){
+
+        if (Math.abs(relativeTurnAngle) > slowDownTurnRadians){
 
             movement_y*=slowDownAmount;
             movement_x*=slowDownAmount;
         }
 
-        if (distanceToTarget>=20){
+        if (distanceToTarget>=10){
             movement_turn = Range.clip(relativeTurnAngle/Math.toRadians(30),-1,1)* turnSpeed;
         }else{
             movement_turn = 0;
