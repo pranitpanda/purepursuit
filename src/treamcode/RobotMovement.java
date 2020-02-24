@@ -51,7 +51,7 @@ public class RobotMovement {
     public static void updateLocationAlongPath(ArrayList<CurvePoint> allPoints, Point robotPos){
         double shortestDistanceToLine = 100000000;
         int smallest = 0;
-        for (int i = nextPointNum-1; i < allPoints.size()-1;i++){
+        for (int i = nextPointNum-1; i < allPoints.size()-1 && i < nextPointNum+5;i++){
 
             double[] dArray = pointLineIntersection(robotPos,allPoints.get(i),allPoints.get(i+1));
 
@@ -76,6 +76,10 @@ public class RobotMovement {
         }
 
         if (nextPointNum==7&&Math.hypot(allPoints.get(7).x-robotPos.x,allPoints.get(7).y-robotPos.y) <=25 ){
+            nextPointNum++;
+        }
+
+        if (nextPointNum==12 && Math.hypot(allPoints.get(12).x-robotPos.x,allPoints.get(12).y-robotPos.y) < 25){
             nextPointNum++;
         }
 
@@ -112,6 +116,10 @@ public class RobotMovement {
             topBound = nextPointNum+1;
         }
 
+        if (nextPointNum==12 && Math.hypot(pathPoints.get(12).x-robotPos.x,pathPoints.get(12).y-robotPos.y) >= followMe.followDistance){
+            topBound = nextPointNum;
+        }
+
 
         for (int i = nextPointNum-1; i < topBound && i <pathPoints.size()-1;i++){
             CurvePoint startLine = pathPoints.get(i);
@@ -133,7 +141,12 @@ public class RobotMovement {
                 }
             }
         }
-
+        if (nextPointNum==15 && Math.hypot(robotPos.x-pathPoints.get(15).x,robotPos.y-pathPoints.get(15).y) <= followMe.followDistance){
+            followMe.setPoint(robotPos);
+        }
+        if (nextPointNum==14 && Math.hypot(robotPos.x-pathPoints.get(nextPointNum).x,robotPos.y-pathPoints.get(nextPointNum).y) < followMe.followDistance){
+            followMe.turnSpeed = 0;
+        }
 
 
         return followMe;
